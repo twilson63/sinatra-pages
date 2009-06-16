@@ -1,0 +1,7 @@
+= sinatra-pages
+
+Description goes here.
+
+== Copyright
+
+Copyright (c) 2009 twilson63. See LICENSE for details.
