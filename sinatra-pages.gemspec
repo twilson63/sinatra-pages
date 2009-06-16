@@ -19,6 +19,12 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION.yml",
+     "config/database.yml",
+     "db/migrate/001_create_pages.rb",
+     "lib/sinatra/pages.rb",
+     "sinatra-pages.gemspec",
+     "test/contest.rb",
+     "test/helper.rb",
      "test/sinatra-pages_test.rb"
   ]
   s.homepage = %q{http://github.com/twilson63/sinatra-pages}
