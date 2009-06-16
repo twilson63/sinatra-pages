@@ -5,7 +5,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "sinatra-pages"
-    gem.summary = %Q{TODO}
+    gem.summary = %Q{A Sinatra Extension that allows you to use a rest controller to add dynamic pages to your app -- see the blank project.  http://github.com/twilson63/blank}
     gem.email = "tom@jackrussellsoftware.com"
     gem.homepage = "http://github.com/twilson63/sinatra-pages"
     gem.authors = ["twilson63"]
@@ -53,4 +53,30 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
+require 'activerecord'
+
+task :environment do
+  dbconfig = YAML.load(File.read('config/database.yml'))
+  ActiveRecord::Base.establish_connection dbconfig['production']
+  
+end
+
+namespace :db do
+  desc "Migrate the database"
+  task(:migrate => :environment) do
+    ActiveRecord::Base.logger = Logger.new(STDOUT)
+    ActiveRecord::Migration.verbose = true
+    ActiveRecord::Migrator.migrate("db/migrate")
+  end
+  
+  desc "Rollback the database"
+  task(:rollback => :environment) do
+    ActiveRecord::Base.logger = Logger.new(STDOUT)
+    ActiveRecord::Migration.verbose = true
+    ActiveRecord::Migrator.rollback("db/migrate")
+  end
+  
+end
+
 
