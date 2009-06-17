@@ -3,6 +3,7 @@
 Sinatra Pages is a sinatra extension that will add a pages rest controller enabling you to add
 haml and markdown pages to your database for an unique content management system.  
 
+Please build gem on github
 
 == Copyright
 
